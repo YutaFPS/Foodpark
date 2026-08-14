@@ -1,8 +1,8 @@
 import { useContext } from 'react'
-import './pages.css'
-import Navbar from '../components/Navbar'
 import { GlobalContext } from '../contexts/GlobalContext'
 import { useNavigate } from 'react-router-dom'
+import './pages.css'
+import Navbar from '../components/Navbar'
 
 
 function Home() {

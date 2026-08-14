@@ -6,9 +6,19 @@ export const GlobalContextProvider = ({children}) => {
 // aqui cria as infos salvas no contexto
     const[usuario, setUsuario] = useState("Lúcio Fernando")
 
+    let pontos = 1234
+
+    const[carrinho, setCarrinho] = useState([
+        {
+            nome: 'Nescau batizado',
+            quantidade: 1,
+            preco:10
+        }
+    ])
+
     return(
         <GlobalContext.Provider value={{
-                usuario, setUsuario
+                usuario, setUsuario, pontos, carrinho, setCarrinho
             }}>
             {children}
         </GlobalContext.Provider>
