@@ -1,0 +1,28 @@
+.cont-cardproduto {
+   display: flex;
+    box-shadow: 0 0 5px #0f0f0fe8;
+    background-color: rgb(233, 233, 233);
+    padding: 10px;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 10px;
+    min-width: 15%;
+    min-height: 25%;
+    border-radius: 5px;
+}
+
+.butao {
+    min-width: 135px;
+    min-height: 25px;
+    border:none;
+    border-radius: 5%;
+    background-color: rgb(59, 216, 59);
+    font-weight: bold;
+}
+
+.butao:hover {
+    background-color: rgb(10, 114, 10);
+}
