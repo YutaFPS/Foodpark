@@ -1,4 +1,4 @@
-import { createContext, useState} from "react";
+import { createContext, useEffect, useState} from "react";
 
 export const GlobalContext = createContext()
 
@@ -8,17 +8,7 @@ export const GlobalContextProvider = ({children}) => {
 
     let pontos = 1234
 
-    const[carrinho, setCarrinho] = useState([
-        {
-            produto: {
-                id: 67,
-                nome: 'Nescau batizado',
-                preco: 10
-            },
-            quantidade:1,
-            id: 5555,
-        }
-    ])
+    const[carrinho, setCarrinho] = useState([])
 
     const[cardapioTaverna, setcardapioTaverna] = useState([
         {
@@ -43,15 +33,23 @@ export const GlobalContextProvider = ({children}) => {
         
     ])
     
+    useEffect( ()=> {
+        console.log(carrinho)
+    } ,[carrinho])
+
+
+
     function adicionarAoCarrinho(id, restaurante){
         console.log(carrinho)
 
         if(restaurante == 'taverna'){
-            let novoProduto = cardapioTaverna.find( p = p.id == id)
+            let novoProduto = cardapioTaverna.find( p => p.id == id)
             console.log(novoProduto)
 
             setCarrinho([...carrinho, {
-
+                produto: novoProduto,
+                quantidade: 1,
+                id:Date.now()
             }])
         }
 

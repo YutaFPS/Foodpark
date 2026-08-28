@@ -7,7 +7,7 @@
     box-shadow: 0 0 10px #000;
 }
 
-.container-home, .cont-taverna, .cont-cereal{
+.container-home, .cont-taverna, .cont-cereal, .cont-carrinho{
     display: flex;
     flex-direction: column;
     justify-content: center;
