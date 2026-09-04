@@ -22,7 +22,11 @@ app.use(express.json());
 app.get('/produtos', async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM produtos');
-        res.json(result.rows);
+        let convertido = result.rows.map((p) => ({
+            ...p,
+            preco: Number(p.preco)
+        }));
+        res.json(convertido);
     } catch (err) {
         console.error(err.message);
         res.status(500).json({ error: 'Erro ao buscar produtos' });
@@ -65,8 +69,8 @@ app.put('/produtos/:id', async (req, res) => {
     const { nome, preco, estabelecimento } = req.body;
     try {
         const result = await pool.query(
-            'UPDATE produtos SET nome = $1, preco = $2, estabelecimento where id = $3 RETURNING *',
-            [nome, preco, estabelecimento]
+            'UPDATE produtos SET nome = $1, preco = $2, estabelecimento = $3 where id = $4 RETURNING *',
+            [nome, preco, estabelecimento, id]
         );
         if (result.rows.length === 0) {
             return res.status(404).json({ error: 'produto não encontrado' });
